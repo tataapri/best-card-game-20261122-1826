@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Court — a duel of cards</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<noscript><p style="padding:20px;text-align:center">Ember Court needs JavaScript to play.</p></noscript>
+<div id="app">
+  <header id="topbar">
+    <div class="brand">EMBER COURT</div>
+    <div class="top-mid"><span id="turnLabel">Turn 1</span><span id="phaseLabel">Your move</span></div>
+    <div class="top-right">
+      <button id="muteBtn" type="button" title="Mute (M)">Sound: On</button>
+      <button id="newBtn" type="button" title="New game (N)">New game</button>
+    </div>
+  </header>
+
+  <main id="table">
+    <section id="foeArea" class="side">
+      <div class="fighter" id="foeFighter">
+        <div class="avatar foe-avatar">W</div>
+        <div class="fighter-info">
+          <div class="fighter-name">Warden of Embers <span class="tag">AI opponent</span></div>
+          <div class="hpbar"><div class="hpfill foe-hp" id="foeHpFill"></div><span class="hptext" id="foeHpText"></span></div>
+          <div class="meters"><span id="foeMana"></span><span id="foeShield"></span></div>
+        </div>
+      </div>
+      <div class="hand foe-hand" id="foeHand" aria-label="Opponent hand"></div>
+    </section>
+
+    <section id="arena">
+      <div class="played" id="foePlayed"></div>
+      <div class="arena-mid">
+        <div id="comboBanner"></div>
+        <div id="announce" aria-live="polite"></div>
+      </div>
+      <div class="played" id="playerPlayed"></div>
+    </section>
+
+    <section id="playerArea" class="side">
+      <div class="fighter" id="playerFighter">
+        <div class="avatar player-avatar">Y</div>
+        <div class="fighter-info">
+          <div class="fighter-name">You <span class="tag">Lantern Bearer</span></div>
+          <div class="hpbar"><div class="hpfill player-hp" id="playerHpFill"></div><span class="hptext" id="playerHpText"></span></div>
+          <div class="meters"><span id="playerMana"></span><span id="playerShield"></span></div>
+        </div>
+        <button id="endTurnBtn" type="button">End turn <kbd>Enter</kbd></button>
+      </div>
+      <div class="hand player-hand" id="playerHand" aria-label="Your hand"></div>
+    </section>
+    <div id="hint">Keys 1–7 play a card · Enter ends your turn · M mutes sound</div>
+  </main>
+
+  <aside id="logPanel">
+    <div class="log-title">Court Chronicle</div>
+    <ol id="log"></ol>
+  </aside>
+
+  <div id="overlay" class="hidden">
+    <div id="overlayCard">
+      <div id="overlayKicker"></div>
+      <h1 id="overlayTitle"></h1>
+      <p id="overlayText"></p>
+      <div id="overlayStats"></div>
+      <div id="legend"></div>
+      <button id="overlayBtn" type="button"></button>
+    </div>
+  </div>
+
+  <div id="confetti"></div>
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
